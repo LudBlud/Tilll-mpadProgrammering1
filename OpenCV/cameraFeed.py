@@ -22,6 +22,5 @@ while rval == True: #kör programmet tills output från kameran bryts
     key = cv2.waitKey(20)
     if key == 27: #Om tangenten som trycks är ESC stängs programmet av
         break
-    
 cv2. destroyWindow("CameraFeed")
 vc.release()
