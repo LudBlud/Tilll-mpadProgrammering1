@@ -3,7 +3,7 @@
 # Author: Ludvig Overland (Inspiration från Evan Juras liknande projekt)
 # Date: 11/3/26
 # Description: Tar videon från CameraFeed.py och greyscalar
-#              och thresholdar för försöka isolera korten.
+#              och thresholdar bilden.
 
 #Importera nödvändiga bibliotek
 import cv2
@@ -26,6 +26,8 @@ def preprocess_image(image):
     
     retval, thresh = cv2.threshold(blur, thresh_level, 255, cv2.THRESH_BINARY)
     #Denna raden konverterar bilden till en binär värde svart eller vitt asså
+    
+    
     
     return thresh
 
@@ -51,7 +53,7 @@ while rval == True:
     cv2.imshow("CameraFeed", frame) #Original
     cv2.imshow("Preprocessed", processed_frame) #Processerad bild
     
-    rval, fram = vc.read()
+    rval, frame = vc.read()
     key = cv2.waitKey(20)
     
     if key == 27: 
