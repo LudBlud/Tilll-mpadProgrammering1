@@ -1,15 +1,24 @@
-######## CardIdentify #######
-#
+############## CardRecognise ##############
+# 
 # Author: Ludvig Overland
-# Date: 19/3-26
-# Description: Tar den thresholdade bilden, hittar contours runt
-#              de vita delarna och identifierar hur många spelkort
-#              som finns i bilden.
+# Date: 27/3-26
+# Description: Tar de inringade korten från cardIdentify.py
+#              och hittar vilken rank och suit kortet har.
+#              Projektet tar mycket inspiration från Evan Juras liknande projekt,
+#              tanken är att man ska göra det på samma sätt:
+# Method:
+#   1. Hitta korten genom processen från cardIdentify.py
+#   2. Croppa ut varenda kort och ta sedan en skärmbild på övre vänstra hörnet, där rank och suit finns
+#   3. Dela den skärmdumpen på hälften för att isolera suit och rank för sig
+#   4. Jämför med bildbiblioteket jag snodde från Evan Juras
+#   5. Den med minst överlappande pixlar antas vara rätt.
+#
+#   Se denna videon för en bättre förklaring: https://www.youtube.com/watch?v=m-QPjO-2IkA
+
+#Importerar nödvändiga bibliotek
 
 import cv2
 import numpy as np
-
-BKG_THRESH = 75
 
 # Minsta och största area för att räknas som ett kort
 CARD_MIN_AREA = 10000
